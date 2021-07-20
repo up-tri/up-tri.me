@@ -1,15 +1,5 @@
-# TeensTown-Musashino old page
+# up-tri's homepage
 
-https://teens-town.me
-https://teens-town.app
-https://t-t.page
+https://up-tri.me/
 
-## copyright
-
-**webpage**
-
-&copy; 2021 up-tri.
-
-**team logo**
-
-&copy; 2019 Teens Town Executive Committee.
+&copy; up-tri.
