@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
+    "@types/jest": "^27.4.0",
     "autoprefixer": "^10.2.5",
+    "jest": "^27.4.7",
     "postcss": "^8.2.13",
     "tailwindcss": "^2.1.2"
   }
