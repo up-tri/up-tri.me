@@ -1,8 +1,5 @@
 {
-  "name": "up-tri-top",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
+  "license": "private",
   "scripts": {
     "test": "jest"
   },
