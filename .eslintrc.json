@@ -1,0 +1,13 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    // ssgなので`next/Image`は使わない
+    "@next/next/no-img-element": "off"
+  },
+  "overrides": [{
+    "files": ["./src/components/templates/**/*.tsx"],
+    "rules": {
+      "@next/next/no-page-custom-font": "off"
+    }
+  }]
+}
