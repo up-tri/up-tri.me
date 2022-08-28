@@ -46,6 +46,7 @@ export const PageHead: React.FC<PageHeadProps> = (props) => {
   return (
     <>
       <Head>
+        <link rel='shortcut icon' href='/favicon.ico' type='image/x-icon' />
         <title>{displayedTitle}</title>
         <meta name='description' content={props.description} />
         <meta name='keywords' content={props.keywords.join(",")} />
