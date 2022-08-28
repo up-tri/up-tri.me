@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import Link from "next/link";
 import { PageHeadProps } from "../components/atoms/PageHead";
 import { TailwindTemplate } from "../components/templates/TailwindTemplate";
 import { appConfig } from "../lib/consts/appConfig";
@@ -33,6 +32,7 @@ const HomePage: NextPage = () => {
           </p>
           <hr className='block h-1 my-5 border-none bg-gray-600' />
           <ul className='ml-4' style={{ listStyleType: "square" }}>
+            {/* 
             <li className='my-2'>
               <Link href='/blog'>
                 <a
@@ -43,6 +43,7 @@ const HomePage: NextPage = () => {
                 </a>
               </Link>
             </li>
+            */}
             <li className='my-2'>
               <a
                 id='uptrime__top_headlink_github'
