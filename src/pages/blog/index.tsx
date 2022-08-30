@@ -1,5 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import { PageHeadProps } from "../../components/atoms/PageHead";
+import { PageFooterProps } from "../../components/organisms/PageFooter";
+import { PageHeaderProps } from "../../components/organisms/PageHeader";
 import { PostSummaryItem } from "../../components/organisms/PostSummaryItem";
 import { DefaultTemplate } from "../../components/templates/DefaultTemplate";
 import { Blog } from "../../lib/domain/Models/Blog";
@@ -36,9 +38,19 @@ const BlogIndexPage: NextPage<BlogIndexPageProps> = ({
     description: "",
     keywords: [],
   };
+  const headerProps: PageHeaderProps = {
+    //
+  };
+  const footerProps: PageFooterProps = {
+    //
+  };
 
   return (
-    <DefaultTemplate headProps={headProps}>
+    <DefaultTemplate
+      headProps={headProps}
+      headerProps={headerProps}
+      footerProps={footerProps}
+    >
       <div>
         <pre>
           {JSON.stringify({ blogs, totalCount, offset, limit }, undefined, 2)}

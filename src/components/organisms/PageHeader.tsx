@@ -5,5 +5,9 @@ export type PageHeaderProps = {
   //
 };
 export const PageHeader: React.FC<PageHeaderProps> = () => {
-  return <div className={style.PageHeader}>{/*  */}</div>;
+  return (
+    <div className={style.PageHeader}>
+      <div className={style.PageHeader__title}>up-tri&apos;s site</div>
+    </div>
+  );
 };

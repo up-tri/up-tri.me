@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { PageHeadProps } from "../components/atoms/PageHead";
+import { ImageWithCaption } from "../components/molecules/ImageWithCaption";
 import { TailwindTemplate } from "../components/templates/TailwindTemplate";
 import { appConfig } from "../lib/consts/appConfig";
 
@@ -72,10 +73,17 @@ const HomePage: NextPage = () => {
               </a>
             </li>
           </ul>
-          <img
-            className='block my-5 shadow'
-            src='https://images.microcms-assets.io/assets/ce193495dc6e4d80b89453771eea746d/d9a4be4437044b26bbad5f24393bbe36/penguin_small.jpeg?w=600'
-            alt='私、ではなくねこぺん'
+          <ImageWithCaption
+            className='my-5'
+            image={{
+              src: "https://images.microcms-assets.io/assets/ce193495dc6e4d80b89453771eea746d/d9a4be4437044b26bbad5f24393bbe36/penguin_small.jpeg?w=600",
+              alt: "私、ではなくねこぺん",
+              className: "block shadow",
+            }}
+            caption={{
+              captionText: "私、ではなくねこぺん",
+              className: "text-sm text-gray-400 text-right",
+            }}
           />
           <h2 className='text-bold text-2xl mt-5 mb-3 border-b-2 border-gray-300'>
             趣味
@@ -87,16 +95,18 @@ const HomePage: NextPage = () => {
             最近は<code className='bg-blue-100 px-1 mx-1'>FUJIFILM X-Pro2</code>
             を使っています。
           </p>
-          <figure className='my-5'>
-            <img
-              className='block shadow'
-              src='https://images.microcms-assets.io/assets/ce193495dc6e4d80b89453771eea746d/f16193248a304e30b189fddf192c07cd/nemophila.jpeg?w=600'
-              alt='ネモフィラ＠日比谷公園'
-            />
-            <figcaption className='text-sm text-gray-400 text-right'>
-              ネモフィラ＠日比谷公園
-            </figcaption>
-          </figure>
+          <ImageWithCaption
+            className='my-5'
+            image={{
+              src: "https://images.microcms-assets.io/assets/ce193495dc6e4d80b89453771eea746d/f16193248a304e30b189fddf192c07cd/nemophila.jpeg?w=600",
+              alt: "ネモフィラ＠日比谷公園",
+              className: "block shadow",
+            }}
+            caption={{
+              captionText: "ネモフィラ＠日比谷公園",
+              className: "text-sm text-gray-400 text-right",
+            }}
+          />
           <h2 className='text-bold text-2xl mt-5 mb-3 border-b-2 border-gray-300'>
             いろいろな経歴
           </h2>

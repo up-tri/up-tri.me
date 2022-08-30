@@ -44,7 +44,7 @@ const NotFoundPage: NextPage = () => {
         </main>
         <footer className='py-4'>
           <p className='text-center text-sm text-gray-400'>
-            &copy; 2017 - {appConfig.currentYear} up-tri.
+            {appConfig.copyright}
           </p>
         </footer>
       </div>
