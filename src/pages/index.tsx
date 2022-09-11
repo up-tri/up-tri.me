@@ -245,7 +245,7 @@ const HomePage: NextPage = () => {
               </ul>
             </li>
             <li>
-              インフラ・MW
+              infra・middleware
               <ul className='ml-4' style={{ listStyleType: "disc" }}>
                 <li>
                   AWS
