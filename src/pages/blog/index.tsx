@@ -57,7 +57,7 @@ const BlogIndexPage: NextPage<BlogIndexPageProps> = ({
         </pre>
       </div>
       <hr />
-      <div className=''>
+      <div className="">
         {blogs.map((blog) => (
           <PostSummaryItem key={blog.id} blog={blog} />
         ))}

@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Link from "next/link";
 import { PageHeadProps } from "../components/atoms/PageHead";
+import { TailwindFooter } from "../components/organisms/TailwindFooter";
 import { TailwindTemplate } from "../components/templates/TailwindTemplate";
-import { appConfig } from "../lib/consts/appConfig";
 
 const NotFoundPage: NextPage = () => {
   const headProps: PageHeadProps = {
@@ -13,10 +13,9 @@ const NotFoundPage: NextPage = () => {
   };
 
   return (
-    <TailwindTemplate headProps={headProps}>
-      <title>404 - up-tri</title>
+    <TailwindTemplate headProps={headProps} footer={<TailwindFooter />}>
       <div className='font-mono'>
-        <main className='m-auto max-w-full p-4' style={{ width: "600px" }}>
+        <div className='m-auto max-w-full p-4' style={{ width: "600px" }}>
           <hr className='block h-1 my-5 border-none bg-gray-600' />
           <h1 className='text-bold text-xl my-5'>404 Not Found.</h1>
           <p className=''>コンテンツが存在しません。</p>
@@ -41,12 +40,7 @@ const NotFoundPage: NextPage = () => {
             </a>
           </div>
           */}
-        </main>
-        <footer className='py-4'>
-          <p className='text-center text-sm text-gray-400'>
-            {appConfig.copyright}
-          </p>
-        </footer>
+        </div>
       </div>
     </TailwindTemplate>
   );

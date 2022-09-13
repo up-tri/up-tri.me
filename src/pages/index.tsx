@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import { PageHeadProps } from "../components/atoms/PageHead";
 import { ImageWithCaption } from "../components/molecules/ImageWithCaption";
+import { TailwindFooter } from "../components/organisms/TailwindFooter";
 import { TailwindTemplate } from "../components/templates/TailwindTemplate";
-import { appConfig } from "../lib/consts/appConfig";
 
 const HomePage: NextPage = () => {
   const headProps: PageHeadProps = {
@@ -12,9 +12,9 @@ const HomePage: NextPage = () => {
   };
 
   return (
-    <TailwindTemplate headProps={headProps}>
+    <TailwindTemplate headProps={headProps} footer={<TailwindFooter />}>
       <div className='font-mono'>
-        <main className='m-auto max-w-full p-4' style={{ width: "600px" }}>
+        <div className='m-auto max-w-full p-4' style={{ width: "600px" }}>
           <hr className='block h-1 my-5 border-none bg-gray-600' />
           <h1 className='text-bold text-3xl my-5'>up-tri&apos;s profile</h1>
           <p className=''>
@@ -292,12 +292,7 @@ const HomePage: NextPage = () => {
               </ul>
             </li>
           </ul>
-        </main>
-        <footer className='py-4'>
-          <p className='text-center text-sm text-gray-400'>
-            &copy; 2017 - {appConfig.currentYear} up-tri.
-          </p>
-        </footer>
+        </div>
       </div>
     </TailwindTemplate>
   );

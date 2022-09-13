@@ -6,10 +6,12 @@ import style from "./TailwindTemplate.module.scss";
 type TailwindTemplateProps = {
   headProps: PageHeadProps;
   children: React.ReactNode;
+  footer: React.ReactNode;
 };
 export const TailwindTemplate: React.FC<TailwindTemplateProps> = ({
   headProps,
   children,
+  footer,
 }) => {
   return (
     <RootTemplate
@@ -28,7 +30,10 @@ export const TailwindTemplate: React.FC<TailwindTemplateProps> = ({
       }
     >
       <PageHead {...headProps} />
-      <div className={style.TailwindTemplate}>{children}</div>
+      <div className={style.TailwindTemplate}>
+        <main className={style.TailwindTemplate__main}>{children}</main>
+        <div className={style.TailwindTemplate__footer}>{footer}</div>
+      </div>
     </RootTemplate>
   );
 };

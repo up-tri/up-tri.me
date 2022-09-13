@@ -1,14 +1,16 @@
 import React from "react";
-import { appConfig } from "../../lib/consts/appConfig";
+import { Copyright } from "../atoms/Copyright";
 import style from "./PageFooter.module.scss";
 
 export type PageFooterProps = {
   //
 };
-export const PageFooter: React.FC<PageFooterProps> = () => {
+export const PageFooter: React.FC<PageFooterProps> = (_) => {
   return (
-    <div className={style.PageFooter}>
-      <p className={style.PageFooter__copyright}>{appConfig.copyright}</p>
-    </div>
+    <footer className={style.PageFooter}>
+      <div className={style.PageFooter__copyright}>
+        <Copyright />
+      </div>
+    </footer>
   );
 };

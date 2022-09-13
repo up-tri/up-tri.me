@@ -1,3 +1,12 @@
+@import "base";
+
 .PageFooter {
-  // 
+  padding: 20px;
+  background-color: $color_theme_heavy;
+
+  &__copyright {
+    font-size: 14px;
+    text-align: center;
+    color: $color_theme_white;
+  }
 }
