@@ -180,7 +180,7 @@ const HomePage: NextPage = () => {
                 2021年4月〜現在
               </h3>
               <p>IT企業でECシステムの検索バックエンド部門に所属</p>
-              <p>検索面のフロントエンドエンジニアも兼任</p>
+              <p>→2023年度から検索面フロントエンドチームのEMに。</p>
             </li>
             <li className='mb-3'>
               <h3 className='p-1 text-bold text-lg bg-green-600 text-white'>
