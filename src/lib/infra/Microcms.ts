@@ -27,6 +27,12 @@ export class Microcms {
       queries: { limit, offset, orders },
     });
   }
+
+  public getIds(endpoint: string) {
+    return this.client.getAllContentIds({
+      endpoint,
+    });
+  }
 }
 
 export const microcmsClient = new Microcms();
