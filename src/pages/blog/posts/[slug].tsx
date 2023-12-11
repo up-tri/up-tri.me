@@ -1,9 +1,6 @@
-// https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes
-export const runtime = "edge";
-
 import classNames from "classnames";
 import dayjs from "dayjs";
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps, GetStaticPaths, NextPage } from "next";
 import { PageHeadProps } from "../../../components/atoms/PageHead";
 import { PageFooterProps } from "../../../components/organisms/PageFooter";
 import { PageHeaderProps } from "../../../components/organisms/PageHeader";
@@ -17,19 +14,30 @@ type BlogPageProps = {
   blog: Blog;
 };
 
-export const getServerSideProps = (async ({ params }) => {
+export const getStaticPaths = (async () => {
+  const blogIds = await blogRepository.getIds();
+  console.log({ blogIds });
+  const paths = blogIds.map((slug) => ({
+    params: { slug },
+  }));
+  return { paths, fallback: true };
+}) satisfies GetStaticPaths;
+
+export const getStaticProps = (async ({ params }) => {
   const slug = params?.slug;
+  console.log({ slug });
   if (!slug || Array.isArray(slug)) return notFoundRedirect;
 
   try {
-    const post = await blogRepository.getThePage(slug);
-    return { props: { post } };
+    const blog = await blogRepository.getThePage(slug);
+    console.log({ blog });
+    return { props: { blog } };
   } catch (error) {
     console.error(error);
     return notFoundRedirect;
   }
 }) satisfies GetServerSideProps<{
-  post: Blog;
+  blog: Blog;
 }>;
 
 const BlogPage: NextPage<BlogPageProps> = (props) => {
@@ -45,6 +53,8 @@ const BlogPage: NextPage<BlogPageProps> = (props) => {
   const footerProps: PageFooterProps = {
     //
   };
+  const createdAt = dayjs(props.blog.createdAt).format("YYYY-MM-DD");
+  const revisedAt = dayjs(props.blog.revisedAt).format("YYYY-MM-DD");
 
   return (
     <DefaultTemplate
@@ -63,17 +73,19 @@ const BlogPage: NextPage<BlogPageProps> = (props) => {
               style.blogHeader__captionIcon
             )}
           />
-          {dayjs(props.blog.createdAt).format("YYYY-MM-DD")}
+          {createdAt}
         </p>
-        <p className={style.blogHeader__caption}>
-          <i
-            className={classNames(
-              "fa-solid fa-clock-rotate-left",
-              style.blogHeader__captionIcon
-            )}
-          />
-          {dayjs(props.blog.revisedAt).format("YYYY-MM-DD")}
-        </p>
+        {createdAt !== revisedAt && (
+          <p className={style.blogHeader__caption}>
+            <i
+              className={classNames(
+                "fa-solid fa-clock-rotate-left",
+                style.blogHeader__captionIcon
+              )}
+            />
+            {revisedAt}
+          </p>
+        )}
         {/* <p>{props.blog.category?.name}</p> */}
       </div>
       <div className={style.blogContent}>
@@ -83,6 +95,12 @@ const BlogPage: NextPage<BlogPageProps> = (props) => {
             dangerouslySetInnerHTML={{ __html: props.blog.content }}
           />
         )}
+      </div>
+      <div className={style.blogFooter}>
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+        <a href="/" className={style.blogFooter__returnHomeButton}>
+          ❯ return to home
+        </a>
       </div>
       {/* <p>homeへ戻る</p> */}
     </DefaultTemplate>

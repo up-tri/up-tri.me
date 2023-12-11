@@ -4,7 +4,7 @@
 .blogHeader {
   margin: $sizing__space_section 0;
   padding: $sizing__space_breakline 0;
-  background-color: $color__theme_primary;
+  background-color: $color__text_base;
 
   &__title {
     padding: $sizing__space_breakline $sizing__space_hx_vx_inner;
@@ -158,6 +158,28 @@
       > li > ol {
         list-style: lower-roman;
       }
+    }
+  }
+}
+
+.blogFooter {
+  margin-top: $sizing__space_section;
+
+  &__returnHomeButton {
+    display: inline-block;
+    margin: 0 $sizing__space_inline $sizing__space_inline 0;
+    border: $sizing__divider_light solid $color__theme_primary;
+    background-color: $color__theme_primary;
+    padding: $sizing__space_breakline $sizing__space_paragraph_strong;
+    font-size: $fontsize__base;
+    color: $color__theme_white;
+    text-decoration: none;
+    box-shadow: $boxshadow_default;
+
+    &:hover {
+      transition: $duration_default;
+      background-color: $color__theme_white;
+      color: $color__theme_primary;
     }
   }
 }
