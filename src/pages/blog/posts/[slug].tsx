@@ -19,7 +19,8 @@ type BlogPageParams = NextParsedUrlQuery & {
 };
 
 export const getStaticPaths: GetStaticPaths<BlogPageParams> = () => {
-  const slugs = ["6irhhq2vhe5"];
+  const slugs: string[] = [];
+  // const slugs = ["6irhhq2vhe5"];
   return {
     paths: slugs.map((slug) => ({
       params: { slug },
