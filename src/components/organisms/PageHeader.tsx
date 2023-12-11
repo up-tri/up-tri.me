@@ -7,7 +7,11 @@ export type PageHeaderProps = {
 export const PageHeader: React.FC<PageHeaderProps> = () => {
   return (
     <header className={style.PageHeader}>
-      <div className={style.PageHeader__title}>up-tri&apos;s site</div>
+      <div className={style.PageHeader__inner}>
+        <a href="/" className={style.PageHeader__title}>
+          up-tri&apos;s site
+        </a>
+      </div>
     </header>
   );
 };

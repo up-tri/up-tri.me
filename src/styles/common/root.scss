@@ -1,0 +1,51 @@
+@import "./base.scss";
+@import "./reset.css";
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  background-color: $color__theme_white;
+  overscroll-behavior-y: none;
+
+  // override vertical-align of Fontawesome icons
+  .fa,
+  .fa-brands,
+  .fa-classic,
+  .fa-duotone,
+  .fa-light,
+  .fa-regular,
+  .fa-sharp,
+  .fa-sharp-solid,
+  .fa-solid,
+  .fa-thin,
+  .fab,
+  .fad,
+  .fal,
+  .far,
+  .fas,
+  .fasl,
+  .fasr,
+  .fass,
+  .fat {
+    vertical-align: middle;
+  }
+}
+
+:root {
+  color: $color__text_base;
+  font-size: $fontsize__base;
+  line-height: 1.2;
+
+  font-family: "Barlow", sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+code {
+  font-family: "Roboto Slab", serif;
+}

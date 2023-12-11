@@ -1,9 +1,7 @@
-import { css } from "@emotion/react";
-
-export const style = css`
+.TailwindTemplate {
   min-height: 100vh;
 
   * {
     font-family: "Inconsolata", "Noto Sans JP", monospace;
   }
-`;
+}

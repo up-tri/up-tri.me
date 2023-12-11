@@ -1,12 +1,24 @@
 @import "base";
 
 .PageHeader {
-  padding: 16px;
-  background-color: $color_theme_heavy;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $color__theme_primary;
+  box-shadow: $boxshadow_default;
+  flex: 1;
+
+  &__inner {
+    padding: $sizing__space_section;
+    width: $sizing__page_container_width;
+    max-width: 100%;
+    margin: 0 auto;
+  }
 
   &__title {
     font-size: 18px;
     font-weight: bold;
-    color: $color_theme_white;
+    color: $color__theme_white;
   }
 }

@@ -1,8 +1,10 @@
+import classNames from "classnames";
 import type { NextPage } from "next";
-import Link from "next/link";
 import { PageHeadProps } from "../components/atoms/PageHead";
-import { TailwindFooter } from "../components/organisms/TailwindFooter";
-import { TailwindTemplate } from "../components/templates/TailwindTemplate";
+import { PageFooterProps } from "../components/organisms/PageFooter";
+import { PageHeaderProps } from "../components/organisms/PageHeader";
+import { DefaultTemplate } from "../components/templates/DefaultTemplate";
+import style from "./404.module.scss";
 
 const NotFoundPage: NextPage = () => {
   const headProps: PageHeadProps = {
@@ -11,38 +13,48 @@ const NotFoundPage: NextPage = () => {
     description: "",
     keywords: [],
   };
+  const headerProps: PageHeaderProps = {
+    //
+  };
+  const footerProps: PageFooterProps = {
+    //
+  };
 
   return (
-    <TailwindTemplate headProps={headProps} footer={<TailwindFooter />}>
-      <div className='font-mono'>
-        <div className='m-auto max-w-full p-4' style={{ width: "600px" }}>
-          <hr className='block h-1 my-5 border-none bg-gray-600' />
-          <h1 className='text-bold text-xl my-5'>404 Not Found.</h1>
-          <p className=''>コンテンツが存在しません。</p>
-          <hr className='block h-1 my-5 border-none bg-gray-600' />
-          <div className='text-center'>
-            <Link
-              id='uptrime__404_returnhome_0'
-              href='/'
-              className='inline-block border border-blue-700 px-8 py-5 bg-white text-blue-700 shadow-md transition-all duration-75 hover:bg-blue-700 hover:text-white'
-            >
-              ❯ return to home
-            </Link>
-          </div>
-          {/*
-          <div className='mt-3 text-center'>
-            <a
-              id='uptrime__404_goblog_0'
-              href='https://blog.up-tri.me'
-              className='inline-block border border-green-700 px-8 py-5 bg-white text-green-700 shadow-md transition-all duration-75 hover:bg-green-700 hover:text-white'
-            >
-              ❯ Blogはこちら
-            </a>
-          </div>
-          */}
+    <DefaultTemplate
+      headProps={headProps}
+      headerProps={headerProps}
+      footerProps={footerProps}
+    >
+      <div className={style.NotFoundPage}>
+        <h1 className={style.NotFoundPage__title}>404 Not Found.</h1>
+        <p className={style.NotFoundPage__subtitle}>
+          コンテンツが存在しません。
+        </p>
+        <div className={style.NotFoundPage__links}>
+          <a
+            id="uptrime__404_returnhome_0"
+            href="/"
+            className={classNames(
+              style.NotFoundPage__linkButton,
+              style["NotFoundPage__linkButton--returnHome"]
+            )}
+          >
+            ❯ return to home
+          </a>
+          {/* <a
+            id="uptrime__404_goblog_0"
+            href="/blog"
+            className={classNames(
+              style.NotFoundPage__linkButton,
+              style["NotFoundPage__linkButton--goBlog"]
+            )}
+          >
+            ❯ Blogはこちら
+          </a> */}
         </div>
       </div>
-    </TailwindTemplate>
+    </DefaultTemplate>
   );
 };
 

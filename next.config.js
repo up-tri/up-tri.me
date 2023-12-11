@@ -12,6 +12,18 @@ const nextConfig = {
     SITE_PROTOCOL: process.env.SITE_PROTOCOL ?? "https",
     SITE_HOSTNAME: process.env.SITE_HOSTNAME ?? "",
   },
+  webpack: (config) => {
+    // SVGに対応
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
+    return config;
+  },
+  images: {
+    disableStaticImages: true,
+  },
 };
 
 module.exports = nextConfig;

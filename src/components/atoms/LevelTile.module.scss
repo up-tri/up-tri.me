@@ -1,0 +1,24 @@
+@import "../../styles/common/base";
+
+.LevelTile {
+  display: flex;
+
+  &--inline {
+    display: inline-flex;
+  }
+
+  &__item {
+    display: block;
+    width: $fontsize__small;
+    height: $fontsize__small;
+    margin: 0 2px;
+    background-color: change-color(
+      $color: $color__text_weak,
+      $alpha: $alpha_bg_weak
+    );
+
+    &--active {
+      background-color: $color__theme_primary;
+    }
+  }
+}

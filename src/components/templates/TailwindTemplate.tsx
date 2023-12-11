@@ -30,7 +30,7 @@ export const TailwindTemplate: React.FC<TailwindTemplateProps> = ({
       }
     >
       <PageHead {...headProps} />
-      <div css={style}>
+      <div className={style.TailwindTemplate}>
         <main>{children}</main>
         <div>{footer}</div>
       </div>

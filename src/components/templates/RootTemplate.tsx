@@ -16,7 +16,7 @@ export const RootTemplate: React.FC<RootTemplateProps> = ({
       <Head>
         {appConfig.nodeEnv === "production" && (
           <InlineScript
-            id='head-gtm'
+            id="head-gtm"
             content={`
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -35,19 +35,17 @@ export const RootTemplate: React.FC<RootTemplateProps> = ({
         `}
           />
         )}
-        <meta charSet='UTF-8' />
-        <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <link rel='icon' sizes='16x16' href='/favicon.ico' />
-        <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-        <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+        <meta charSet="UTF-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" sizes="16x16" href="/favicon.ico" />
         {head}
       </Head>
       <noscript>
         <iframe
-          src='https://www.googletagmanager.com/ns.html?id=GTM-KXDM84Q'
-          height='0'
-          width='0'
+          src="https://www.googletagmanager.com/ns.html?id=GTM-KXDM84Q"
+          height="0"
+          width="0"
           style={{ display: "none", visibility: "hidden" }}
         ></iframe>
       </noscript>

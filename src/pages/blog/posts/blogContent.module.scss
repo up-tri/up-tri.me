@@ -1,0 +1,163 @@
+@use "sass:color";
+@import "../../styles/common/base";
+
+.blogHeader {
+  margin: $sizing__space_section 0;
+  padding: $sizing__space_breakline 0;
+  background-color: $color__theme_primary;
+
+  &__title {
+    padding: $sizing__space_breakline $sizing__space_hx_vx_inner;
+    color: $color__theme_white;
+    font-weight: bold;
+  }
+
+  &__divider {
+    margin: $sizing__space_breakline 0;
+    border-bottom: $sizing__divider_light solid $color__theme_white;
+  }
+
+  &__caption {
+    // margin: $sizing__space_breakline 0;
+    padding: 0 $sizing__space_hx_vx_inner;
+    font-size: $fontsize__small;
+    color: $color__theme_white;
+  }
+
+  &__captionIcon {
+    display: inline-block;
+    width: $fontsize__base;
+    margin-right: $sizing__space_inline;
+    font-size: $fontsize__small;
+  }
+
+  @include breakpoint_mobile {
+    // font-size: $fontsize__title_blog_h2;
+  }
+}
+.blogContent {
+  line-height: 1.7;
+  h1 {
+    margin: $sizing__space_section 0;
+    padding: $sizing__space_h2inner $sizing__space_hx_vx_inner;
+    font-size: $fontsize__title_blog_h1;
+    font-weight: bold;
+    color: $color__theme_white;
+    background-color: $color__theme_primary;
+
+    @include breakpoint_mobile {
+      font-size: $fontsize__title_blog_h2;
+    }
+  }
+  h2 {
+    margin: $sizing__space_section 0;
+    padding: $sizing__space_h2inner $sizing__space_hx_vx_inner;
+    font-size: $fontsize__title_blog_h2;
+    font-weight: bold;
+    color: $color__theme_white;
+    background-color: $color__text_base;
+  }
+  h3 {
+    display: block;
+    margin: $sizing__space_paragraph_strong 0;
+    border-top: $sizing__divider_normal dashed $color__text_weak;
+    border-bottom: $sizing__divider_normal dashed $color__text_weak;
+    padding: $sizing__space_h2inner $sizing__space_hx_vx_inner;
+    font-size: $fontsize__title_blog_h3;
+    font-weight: bold;
+  }
+  h4 {
+    display: block;
+    margin: $sizing__space_paragraph_strong 0;
+    border-bottom: $sizing__divider_normal solid $color__text_weak;
+    padding: $sizing__space_blog_h4inner $sizing__space_hx_vx_inner;
+    font-size: $fontsize__title_blog_h3;
+    font-weight: bold;
+  }
+  h5 {
+    margin: $sizing__space_paragraph_strong 0;
+    font-size: $fontsize__title_blog_h5;
+    border-bottom: $sizing__divider_thin dashed $color__text_weak;
+    padding: $sizing__space_breakline $sizing__space_hx_vx_inner;
+    font-weight: bold;
+  }
+  h6 {
+    font-size: $fontsize__title_blog_h6;
+    font-weight: bold;
+  }
+  p {
+    margin-bottom: $sizing__space_paragraph;
+  }
+  img,
+  iframe {
+    max-width: 100%;
+    height: auto;
+    margin: $sizing__space_breakline 0;
+    box-shadow: $boxshadow_default;
+  }
+  strong {
+    font-weight: bold;
+  }
+  em {
+    font-style: italic;
+  }
+  u {
+    text-decoration: underline;
+  }
+  s {
+    text-decoration: line-through;
+  }
+  p > code {
+    display: inline;
+    margin: 0 $sizing__space_inline;
+    background-color: change-color(
+      $color: $color__text_weak,
+      $alpha: $alpha_bg_weak
+    );
+    padding: 0 $sizing__space_inline;
+  }
+  pre {
+    margin: $sizing__space_breakline 0;
+    padding: $sizing__space_breakline;
+    background-color: change-color(
+      $color: $color__text_weak,
+      $alpha: $alpha_bg_weak
+    );
+    overflow-x: scroll;
+    box-shadow: $boxshadow_default;
+    code {
+      display: block;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+    }
+  }
+  blockquote {
+    margin: $sizing__space_breakline 0;
+    padding: $sizing__space_breakline;
+    border-left: $sizing__divider_normal solid $color__text_weak;
+    background-color: $color__theme_white;
+  }
+  ul {
+    // margin: $sizing__space_breakline 0;
+    padding: 0 $sizing__space_paragraph;
+    list-style: disc;
+    > li > ul {
+      list-style: circle;
+      > li > ul {
+        list-style: square;
+      }
+    }
+  }
+  ol {
+    // margin: $sizing__space_breakline 0;
+    padding: 0 $sizing__space_paragraph;
+    list-style: decimal;
+    > li > ol {
+      list-style: lower-alpha;
+      > li > ol {
+        list-style: lower-roman;
+      }
+    }
+  }
+}
