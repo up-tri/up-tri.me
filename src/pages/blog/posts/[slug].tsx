@@ -25,12 +25,10 @@ export const getStaticPaths = (async () => {
 
 export const getStaticProps = (async ({ params }) => {
   const slug = params?.slug;
-  console.log({ slug });
   if (!slug || Array.isArray(slug)) return notFoundRedirect;
 
   try {
     const blog = await blogRepository.getThePage(slug);
-    console.log({ blog });
     return { props: { blog } };
   } catch (error) {
     console.error(error);
@@ -41,6 +39,7 @@ export const getStaticProps = (async ({ params }) => {
 }>;
 
 const BlogPage: NextPage<BlogPageProps> = (props) => {
+  if (!props.blog) return <></>;
   const headProps: PageHeadProps = {
     pageType: "list",
     title: "ブログ記事一覧",
