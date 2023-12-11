@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import dayjs from "dayjs";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { NextParsedUrlQuery } from "next/dist/server/request-meta";
+import { GetServerSideProps, NextPage } from "next";
 import { PageHeadProps } from "../../../components/atoms/PageHead";
 import { PageFooterProps } from "../../../components/organisms/PageFooter";
 import { PageHeaderProps } from "../../../components/organisms/PageHeader";
@@ -14,38 +13,21 @@ import style from "./blogContent.module.scss";
 type BlogPageProps = {
   blog: Blog;
 };
-type BlogPageParams = NextParsedUrlQuery & {
-  slug: string;
-};
 
-export const getStaticPaths: GetStaticPaths<BlogPageParams> = () => {
-  const slugs: string[] = [];
-  // const slugs = ["6irhhq2vhe5"];
-  return {
-    paths: slugs.map((slug) => ({
-      params: { slug },
-    })),
-    fallback: true,
-  };
-};
+export const getServerSideProps = (async ({ params }) => {
+  const slug = params?.slug;
+  if (!slug || Array.isArray(slug)) return notFoundRedirect;
 
-export const getStaticProps: GetStaticProps<
-  BlogPageProps,
-  BlogPageParams
-> = async ({ params }) => {
-  if (params) {
-    try {
-      const blog = await blogRepository.getThePage(params.slug);
-      if (blog) {
-        return { props: { blog } };
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  try {
+    const post = await blogRepository.getThePage(slug);
+    return { props: { post } };
+  } catch (error) {
+    console.error(error);
+    return notFoundRedirect;
   }
-
-  return notFoundRedirect;
-};
+}) satisfies GetServerSideProps<{
+  post: Blog;
+}>;
 
 const BlogPage: NextPage<BlogPageProps> = (props) => {
   const headProps: PageHeadProps = {
