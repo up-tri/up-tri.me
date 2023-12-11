@@ -1,3 +1,19 @@
+@import "base";
+
 .PageFooter {
-  // 
+  padding: 20px;
+  background-color: $color__theme_primary;
+  box-shadow: $boxshadow_default;
+
+  &__inner {
+    width: $sizing__page_container_width;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  &__copyright {
+    font-size: 14px;
+    text-align: center;
+    color: $color__theme_white;
+  }
 }

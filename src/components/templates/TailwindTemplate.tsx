@@ -6,29 +6,34 @@ import style from "./TailwindTemplate.module.scss";
 type TailwindTemplateProps = {
   headProps: PageHeadProps;
   children: React.ReactNode;
+  footer: React.ReactNode;
 };
 export const TailwindTemplate: React.FC<TailwindTemplateProps> = ({
   headProps,
   children,
+  footer,
 }) => {
   return (
     <RootTemplate
       head={
         <>
           <link
-            href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css'
-            rel='stylesheet'
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
           />
-          <link rel='preconnect' href='https://fonts.gstatic.com' />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href='https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Noto+Sans+JP:wght@500&display=swap'
-            rel='stylesheet'
+            href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Noto+Sans+JP:wght@500&display=swap"
+            rel="stylesheet"
           />
         </>
       }
     >
       <PageHead {...headProps} />
-      <div className={style.TailwindTemplate}>{children}</div>
+      <div className={style.TailwindTemplate}>
+        <main>{children}</main>
+        <div>{footer}</div>
+      </div>
     </RootTemplate>
   );
 };

@@ -1,0 +1,77 @@
+@use "sass:color";
+@import "../styles/common/base";
+
+.NotFoundPage {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+
+  &__title {
+    margin-top: $sizing__space_paragraph_strong;
+    font-size: $fontsize__title_h1;
+    font-weight: bold;
+  }
+
+  &__subtitle {
+    margin: $sizing__space_paragraph 0;
+    font-size: $fontsize__title_h2;
+  }
+
+  &__links {
+    margin: $sizing__space_paragraph 0;
+  }
+
+  &__linkButton {
+    display: inline-block;
+    margin: 0 $sizing__space_inline $sizing__space_inline 0;
+    border: $sizing__divider_light solid $color__text_base;
+    background-color: $color__text_base;
+    padding: $sizing__space_breakline $sizing__space_paragraph_strong;
+    font-size: $fontsize__base;
+    color: $color__theme_white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: $boxshadow_default;
+
+    &:hover {
+      transition: $duration_default;
+      background-color: $color__theme_white;
+      color: $color__text_base;
+    }
+
+    &--returnHome {
+      border-color: $color__theme_primary;
+      background-color: $color__theme_primary;
+      &:hover {
+        color: $color__theme_primary;
+      }
+    }
+
+    // &--goBlog {
+    //   border-color: $color__theme_secondary;
+    //   background-color: $color__theme_secondary;
+    //   &:hover {
+    //     color: $color__theme_secondary;
+    //   }
+    // }
+  }
+
+  &__returnHomeButton {
+    margin: $sizing__space_paragraph 0;
+    border: $sizing__divider_light solid $color__theme_primary;
+    background-color: $color__theme_primary;
+    padding: $sizing__space_breakline $sizing__space_paragraph_strong;
+    font-size: $fontsize__base;
+    color: $color__theme_white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: $boxshadow_default;
+
+    &:hover {
+      transition: $duration_default;
+      background-color: $color__theme_white;
+      color: $color__theme_primary;
+    }
+  }
+}
