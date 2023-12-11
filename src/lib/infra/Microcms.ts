@@ -5,7 +5,6 @@ import { Order } from "../consts/orders";
 export class Microcms {
   private client: ReturnType<typeof createClient>;
   constructor() {
-    console.log({ apiEnv });
     this.client = createClient({
       serviceDomain: apiEnv.serviceDomain,
       apiKey: apiEnv.apiKey,

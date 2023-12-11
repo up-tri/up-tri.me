@@ -32,6 +32,7 @@ const NotFoundPage: NextPage = () => {
           コンテンツが存在しません。
         </p>
         <div className={style.NotFoundPage__links}>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a
             id="uptrime__404_returnhome_0"
             href="/"
