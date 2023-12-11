@@ -1,3 +1,6 @@
+// https://nextjs.org/docs/app/building-your-application/rendering/edge-and-nodejs-runtimes
+export const runtime = "edge";
+
 import classNames from "classnames";
 import dayjs from "dayjs";
 import { GetServerSideProps, NextPage } from "next";
