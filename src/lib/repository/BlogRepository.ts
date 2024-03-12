@@ -12,8 +12,8 @@ export class BlogRepository {
     return await this.client.get(this.endpoint, slug);
   }
 
-  public async getPages(): Promise<ListBase<Blog>> {
-    return await this.client.getList(this.endpoint);
+  public async getPages(limit: number = 10): Promise<ListBase<Blog>> {
+    return await this.client.getList(this.endpoint, limit);
   }
 
   public async getIds(): Promise<string[]> {

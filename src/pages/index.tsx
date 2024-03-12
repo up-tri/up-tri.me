@@ -32,7 +32,7 @@ const HomePage: NextPage = () => {
       <div className={style.IndexPageSection}>
         <h1 className={style.IndexPageTitle}>up-tri&apos;s profile</h1>
         <p className={style.IndexPageTitleCaption}>こんにちは、up-triです。</p>
-        <p className={style.IndexPageTitleCaption}>
+        {/* <p className={style.IndexPageTitleCaption}>
           <i
             className={classNames(
               "fa-sharp",
@@ -48,7 +48,7 @@ const HomePage: NextPage = () => {
           >
             yaki-shake@up-tri.me
           </a>
-        </p>
+        </p> */}
       </div>
       <div className={style.IndexPageSection}>
         {/* <hr className={style.IndexPageSectionSeparator} /> */}
@@ -104,13 +104,13 @@ const HomePage: NextPage = () => {
                   )}
                 />
                 <a
-                  id="uptrime__top_headlink_qiita"
+                  id="uptrime__top_headlink_zenndev"
                   className={style.IndexPageProfileLinks__link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://qiita.com/up-tri"
+                  href="https://zenn.dev/up_tri"
                 >
-                  Qiita
+                  Zenn.dev
                 </a>
               </li>
               <li className={style.IndexPageProfileLinks__item}>
@@ -122,13 +122,13 @@ const HomePage: NextPage = () => {
                   )}
                 />
                 <a
-                  id="uptrime__top_headlink_zenndev"
+                  id="uptrime__top_headlink_qiita"
                   className={style.IndexPageProfileLinks__link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  href="https://zenn.dev/up_tri"
+                  href="https://qiita.com/up-tri"
                 >
-                  Zenn.dev
+                  Qiita
                 </a>
               </li>
             </ul>

@@ -4,12 +4,29 @@
 .blogHeader {
   margin: $sizing__space_section 0;
   padding: $sizing__space_breakline 0;
-  background-color: $color__text_base;
+  // background-color: $color__text_base;
+
+  &__titleBox,
+  &__captionsBox {
+    background-color: $color__text_base;
+  }
+
+  &__titleBox + &__captionsBox {
+    margin-top: $sizing__space_breakline;
+  }
+
+  &__titleBox {
+    padding: $sizing__space_blog_titleinner $sizing__space_hx_vx_inner;
+  }
+
+  &__captionsBox {
+    padding: $sizing__space_breakline $sizing__space_hx_vx_inner;
+  }
 
   &__title {
-    padding: $sizing__space_breakline $sizing__space_hx_vx_inner;
     color: $color__theme_white;
     font-weight: bold;
+    font-size: $fontsize__title_blog_h1;
   }
 
   &__divider {
@@ -18,10 +35,13 @@
   }
 
   &__caption {
-    // margin: $sizing__space_breakline 0;
-    padding: 0 $sizing__space_hx_vx_inner;
     font-size: $fontsize__small;
     color: $color__theme_white;
+  }
+
+  &__captionItem {
+    display: inline-block;
+    margin-right: $sizing__space_hx_vx_inner;
   }
 
   &__captionIcon {
@@ -180,6 +200,12 @@
       transition: $duration_default;
       background-color: $color__theme_white;
       color: $color__theme_primary;
+    }
+
+    &:after {
+      display: inline;
+      content: "❯";
+      margin-left: 4px;
     }
   }
 }

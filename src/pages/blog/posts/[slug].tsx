@@ -62,45 +62,63 @@ const BlogPage: NextPage<BlogPageProps> = (props) => {
       footerProps={footerProps}
       isPost
     >
-      <div className={style.blogHeader}>
-        <h1 className={style.blogHeader__title}>{props.blog.title}</h1>
-        <hr className={style.blogHeader__divider} />
-        <p className={style.blogHeader__caption}>
-          <i
-            className={classNames(
-              "fa-solid fa-pen",
-              style.blogHeader__captionIcon
-            )}
-          />
-          {createdAt}
-        </p>
-        {createdAt !== revisedAt && (
-          <p className={style.blogHeader__caption}>
-            <i
-              className={classNames(
-                "fa-solid fa-clock-rotate-left",
-                style.blogHeader__captionIcon
+      <article>
+        <header className={style.blogHeader}>
+          <div className={style.blogHeader__titleBox}>
+            <h1 className={style.blogHeader__title}>{props.blog.title}</h1>
+          </div>
+          <div className={style.blogHeader__captionsBox}>
+            <p className={style.blogHeader__caption}>
+              <span className={style.blogHeader__captionItem}>
+                <i
+                  className={classNames(
+                    "fa-solid fa-pen",
+                    style.blogHeader__captionIcon
+                  )}
+                  aria-label="投稿日:"
+                />
+                {createdAt}
+              </span>
+              {createdAt !== revisedAt && (
+                <span className={style.blogHeader__captionItem}>
+                  <i
+                    className={classNames(
+                      "fa-solid fa-clock-rotate-left",
+                      style.blogHeader__captionIcon
+                    )}
+                    aria-label="更新日:"
+                  />
+                  {revisedAt}
+                </span>
               )}
+            </p>
+            {props.blog.category && (
+              <>
+                <hr className={style.blogHeader__divider} />
+                <p className={style.blogHeader__caption}>
+                  <a href={`/blog/category/${props.blog.category.id}`}>
+                    {props.blog.category.name}
+                  </a>
+                </p>
+              </>
+            )}
+          </div>
+        </header>
+        <div className={style.blogContent}>
+          {props.blog.content && (
+            <div
+              className=""
+              dangerouslySetInnerHTML={{ __html: props.blog.content }}
             />
-            {revisedAt}
-          </p>
-        )}
-        {/* <p>{props.blog.category?.name}</p> */}
-      </div>
-      <div className={style.blogContent}>
-        {props.blog.content && (
-          <div
-            className=""
-            dangerouslySetInnerHTML={{ __html: props.blog.content }}
-          />
-        )}
-      </div>
-      <div className={style.blogFooter}>
-        {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-        <a href="/" className={style.blogFooter__returnHomeButton}>
-          ❯ return to home
-        </a>
-      </div>
+          )}
+        </div>
+        <footer className={style.blogFooter}>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+          <a href="/blog" className={style.blogFooter__returnHomeButton}>
+            記事一覧へ戻る
+          </a>
+        </footer>
+      </article>
       {/* <p>homeへ戻る</p> */}
     </DefaultTemplate>
   );
