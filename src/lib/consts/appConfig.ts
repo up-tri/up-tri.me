@@ -4,6 +4,7 @@ const currentYear = dayjs().year();
 
 const _siteProtocol = process.env.SITE_PROTOCOL ?? "https";
 const _siteHost = process.env.SITE_HOSTNAME ?? "";
+const _siteBaseUrl = `${_siteProtocol}://${_siteHost}`;
 
 export const appConfig = {
   siteImage: {
@@ -13,6 +14,7 @@ export const appConfig = {
   },
   siteProtocol: _siteProtocol,
   siteHost: _siteHost,
+  siteBaseUrl: _siteBaseUrl,
   siteName: "up-tri's website",
   nodeEnv: process.env.NODE_ENV,
   currentYear,

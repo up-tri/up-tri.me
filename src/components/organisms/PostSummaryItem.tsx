@@ -1,5 +1,5 @@
 import React from "react";
-import { Blog } from "../../lib/domain/Models/Blog";
+import { Blog } from "../../lib/domain/Models/BlogItem";
 import style from "./PostSummaryItem.module.scss";
 
 export type PostSummaryItemProps = {

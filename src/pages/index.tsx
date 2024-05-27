@@ -51,7 +51,6 @@ const HomePage: NextPage = () => {
         </p> */}
       </div>
       <div className={style.IndexPageSection}>
-        {/* <hr className={style.IndexPageSectionSeparator} /> */}
         <div className={style.IndexPageProfileCard}>
           <img
             src="https://images.microcms-assets.io/assets/ce193495dc6e4d80b89453771eea746d/d9a4be4437044b26bbad5f24393bbe36/penguin_small.jpeg?w=600"
@@ -130,6 +129,20 @@ const HomePage: NextPage = () => {
                 >
                   Qiita
                 </a>
+              </li>
+              <hr className={style.IndexPageProfileLinks__divider} />
+              <li className={style.IndexPageProfileLinks__item}>
+                <i
+                  className={classNames(
+                    "fa-sharp",
+                    "fa-solid",
+                    "fa-envelope",
+                    style.IndexPageProfileLinks__icon
+                  )}
+                />
+                <span className={style.IndexPageProfileLinks__nolink}>
+                  yaki-shake@up-tri.me
+                </span>
               </li>
             </ul>
           </div>

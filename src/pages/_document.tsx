@@ -2,8 +2,9 @@ import { Head, Html, Main, NextScript } from "next/document";
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="ja">
       <Head>
+        <meta name="theme-color" content="#03a6a6" />
         <link
           rel="preload"
           as="style"

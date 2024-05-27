@@ -65,7 +65,7 @@
   flex-wrap: wrap;
 
   &__item {
-    width: calc(50% - $sizing__space_inline);
+    width: $sizing__page_container_width / 2;
     margin: $sizing__space_paragraph 0;
   }
 
@@ -90,12 +90,11 @@
 
 .IndexPageProfileCard {
   width: 100%;
-  max-width: $width_content_max;
+  max-width: $sizing__page_container_width / 2;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin: 0 auto;
   border-radius: $sizing__card_radius;
   box-shadow: $boxshadow_strong;
   background-color: $color__theme_white;
@@ -152,6 +151,13 @@
     margin: $sizing__space_paragraph 0;
   }
 
+  &__divider {
+    margin: $sizing__space_paragraph 0;
+    width: 100%;
+    height: $sizing__divider_light;
+    background-color: $color__text_weak;
+  }
+
   &__icon {
     display: inline-block;
     margin-right: $sizing__space_inline;
@@ -166,6 +172,12 @@
     &:hover {
       opacity: $alpha_normal;
     }
+  }
+
+  &__nolink {
+    font-size: $fontsize__base;
+    font-weight: bold;
+    color: $color__text_base;
   }
 }
 
@@ -182,6 +194,7 @@
 
 .IndexPageJobHistories {
   $listItemCirleSize: 40px;
+  // $listItemCirleMargin: $sizing__space_paragraph;
   $listItemCirleMargin: $sizing__space_paragraph;
 
   list-style: none;
@@ -189,13 +202,10 @@
   &__item {
     position: relative;
     z-index: 0;
-    margin-left: (
-        $listItemCirleSize + $listItemCirleMargin + $sizing__divider_normal
-      )/2;
+    margin-left: ($listItemCirleSize - $sizing__divider_normal)/2;
     border-left: $sizing__divider_normal solid $color__theme_secondary;
-    padding-left: (
-        $listItemCirleSize + $listItemCirleMargin - $sizing__divider_normal
-      )/2;
+    padding-left: $sizing__divider_normal +
+      ($listItemCirleSize + $sizing__divider_normal)/2;
     padding-bottom: $listItemCirleMargin * 3;
   }
 
@@ -287,6 +297,8 @@
 
 .SkillCategoryLabel {
   // margin: 0 $sizing__space_inline;
+  background-color: $color__theme_white;
+  border: 1px solid;
   border-radius: $sizing__card_inner_radius;
   padding: $sizing__space_inline;
   font-size: $fontsize__small;
@@ -294,34 +306,38 @@
 
   &--frontend {
     color: $color__category_frontend;
-    background-color: change-color(
-      $color: $color__category_frontend,
-      $alpha: $alpha_bg_weak
-    );
+    border-color: $color__category_frontend;
+    // border-color: change-color(
+    //   $color: $color__category_frontend,
+    //   $alpha: $alpha_bg_weak
+    // );
   }
 
   &--backend {
     color: $color__category_backend;
-    background-color: change-color(
-      $color: $color__category_backend,
-      $alpha: $alpha_bg_weak
-    );
+    border-color: $color__category_backend;
+    // border-color: change-color(
+    //   $color: $color__category_backend,
+    //   $alpha: $alpha_bg_weak
+    // );
   }
 
   &--infrastructure {
     color: $color__category_infra;
-    background-color: change-color(
-      $color: $color__category_infra,
-      $alpha: $alpha_bg_weak
-    );
+    border-color: $color__category_infra;
+    // border-color: change-color(
+    //   $color: $color__category_infra,
+    //   $alpha: $alpha_bg_weak
+    // );
   }
 
   &--others {
     color: $color__text_weak;
-    background-color: change-color(
-      $color: $color__text_weak,
-      $alpha: $alpha_bg_weak
-    );
+    border-color: $color__text_weak;
+    // border-color: change-color(
+    //   $color: $color__text_weak,
+    //   $alpha: $alpha_bg_weak
+    // );
   }
 }
 

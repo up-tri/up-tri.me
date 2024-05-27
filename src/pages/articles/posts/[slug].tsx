@@ -1,17 +1,16 @@
 import classNames from "classnames";
-import dayjs from "dayjs";
 import { GetServerSideProps, GetStaticPaths, NextPage } from "next";
 import { PageHeadProps } from "../../../components/atoms/PageHead";
 import { PageFooterProps } from "../../../components/organisms/PageFooter";
 import { PageHeaderProps } from "../../../components/organisms/PageHeader";
 import { DefaultTemplate } from "../../../components/templates/DefaultTemplate";
 import { notFoundRedirect } from "../../../lib/consts/notFoundRedirect";
-import { Blog } from "../../../lib/domain/Models/Blog";
+import { ArticleDetail } from "../../../lib/domain/Models/ArticleDetail";
 import { blogRepository } from "../../../lib/repository/BlogRepository";
 import style from "./blogContent.module.scss";
 
 type BlogPageProps = {
-  blog: Blog;
+  blog: ArticleDetail;
 };
 
 export const getStaticPaths = (async () => {
@@ -20,7 +19,7 @@ export const getStaticPaths = (async () => {
   const paths = blogIds.map((slug) => ({
     params: { slug },
   }));
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 }) satisfies GetStaticPaths;
 
 export const getStaticProps = (async ({ params }) => {
@@ -35,7 +34,7 @@ export const getStaticProps = (async ({ params }) => {
     return notFoundRedirect;
   }
 }) satisfies GetServerSideProps<{
-  blog: Blog;
+  blog: ArticleDetail;
 }>;
 
 const BlogPage: NextPage<BlogPageProps> = (props) => {
@@ -52,8 +51,8 @@ const BlogPage: NextPage<BlogPageProps> = (props) => {
   const footerProps: PageFooterProps = {
     //
   };
-  const createdAt = dayjs(props.blog.createdAt).format("YYYY-MM-DD");
-  const revisedAt = dayjs(props.blog.revisedAt).format("YYYY-MM-DD");
+  const createdAt = props.blog.publishedAt.display;
+  const revisedAt = props.blog.updatedAt?.display ?? null;
 
   return (
     <DefaultTemplate
@@ -97,7 +96,7 @@ const BlogPage: NextPage<BlogPageProps> = (props) => {
                 <hr className={style.blogHeader__divider} />
                 <p className={style.blogHeader__caption}>
                   <a href={`/blog/category/${props.blog.category.id}`}>
-                    {props.blog.category.name}
+                    {props.blog.category.label}
                   </a>
                 </p>
               </>

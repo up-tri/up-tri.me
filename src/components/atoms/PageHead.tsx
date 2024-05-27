@@ -38,7 +38,7 @@ export type PageHeadProps =
 export const PageHead: React.FC<PageHeadProps> = (props) => {
   const router = useRouter();
 
-  const currentUrl = `${appConfig.siteProtocol}://${appConfig.siteHost}${router.pathname}`;
+  const currentUrl = `${appConfig.siteBaseUrl}${router.pathname}`;
   const displayedTitle =
     props.pageType === "top"
       ? appConfig.siteName

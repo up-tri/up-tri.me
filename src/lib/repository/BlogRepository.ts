@@ -1,5 +1,9 @@
-import { Blog } from "../domain/Models/Blog";
-import { ListBase } from "../domain/Types/ListBase";
+import { ArticleDetail } from "../domain/Models/ArticleDetail";
+import { BlogItems } from "../domain/Models/BlogItems";
+import {
+  blogItemResponseFilter,
+  blogListResponseFilter,
+} from "../domain/filter/blogResponseFilter";
 import { Microcms, microcmsClient } from "../infra/Microcms";
 
 export class BlogRepository {
@@ -8,12 +12,21 @@ export class BlogRepository {
     //
   }
 
-  public async getThePage(slug: string): Promise<Blog> {
-    return await this.client.get(this.endpoint, slug);
+  public async getThePage(slug: string): Promise<ArticleDetail> {
+    return blogItemResponseFilter(await this.client.get(this.endpoint, slug));
   }
 
-  public async getPages(limit: number = 10): Promise<ListBase<Blog>> {
-    return await this.client.getList(this.endpoint, limit);
+  public async getPages({
+    limit = 10,
+    // FIXME: 汎用的なタクソノミー絞り込みを実装
+    categorySlug,
+  }: {
+    limit?: number;
+    categorySlug?: string;
+  }): Promise<BlogItems> {
+    return blogListResponseFilter(
+      await this.client.getList(this.endpoint, categorySlug, limit)
+    );
   }
 
   public async getIds(): Promise<string[]> {

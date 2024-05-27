@@ -1,17 +1,18 @@
 import { GetStaticProps, NextPage } from "next";
+import { Link } from "../../components/atoms/Link";
 import { PageHeadProps } from "../../components/atoms/PageHead";
 import { PageFooterProps } from "../../components/organisms/PageFooter";
 import { PageHeaderProps } from "../../components/organisms/PageHeader";
 import { DefaultTemplate } from "../../components/templates/DefaultTemplate";
-import { Blog } from "../../lib/domain/Models/Blog";
-import { RssItem } from "../../lib/domain/Models/RssItem";
+import { ArticleSummary } from "../../lib/domain/Models/ArticleSummary";
+import { BlogItems } from "../../lib/domain/Models/BlogItems";
 import { blogRepository } from "../../lib/repository/BlogRepository";
 import { zennArticleRepository } from "../../lib/repository/ZennArticleRepository";
 
 export type BlogIndexPageProps = {
-  blogs: Blog[];
+  blogs: BlogItems;
   rssFeeds: {
-    zenn: RssItem[];
+    zenn: ArticleSummary[];
   };
   totalCount: number;
   offset: number;
@@ -31,29 +32,30 @@ export type BlogIndexPageProps = {
 // };
 
 export const getStaticProps: GetStaticProps<BlogIndexPageProps> = async () => {
-  const pageResult = await blogRepository.getPages(6);
+  const blogs = await blogRepository.getPages({ limit: 6 });
   const zennArticles = await zennArticleRepository.getArticles(6);
   return {
     props: {
-      blogs: pageResult.contents,
+      blogs,
       rssFeeds: {
         zenn: zennArticles,
       },
-      totalCount: pageResult.totalCount,
-      offset: pageResult.offset,
-      limit: pageResult.limit,
+      totalCount: blogs.totalCount,
+      offset: blogs.offset,
+      limit: blogs.limit,
     },
   };
 };
 
 const BlogIndexPage: NextPage<BlogIndexPageProps> = ({
-  // blogs,
+  blogs,
   // totalCount,
   // offset,
   // limit,
   rssFeeds,
 }) => {
   console.log(JSON.stringify(rssFeeds.zenn, undefined, 2));
+  console.log(JSON.stringify(blogs, undefined, 2));
 
   const headProps: PageHeadProps = {
     pageType: "list",
@@ -72,6 +74,7 @@ const BlogIndexPage: NextPage<BlogIndexPageProps> = ({
     <DefaultTemplate
       headProps={headProps}
       headerProps={headerProps}
+      asideProps={{}}
       footerProps={footerProps}
     >
       <p>準備中...</p>
@@ -87,13 +90,24 @@ const BlogIndexPage: NextPage<BlogIndexPageProps> = ({
         ))}
       </div> */}
       <div className="">
+        <h2>blog</h2>
+        {blogs.items.map((blog) => (
+          <div className="" key={blog.id}>
+            <h3>
+              {JSON.stringify(blog.link, undefined, 2)}
+              <Link {...blog.link}>{blog.title}</Link>
+            </h3>
+            <img src={blog.thumbnail.url} alt={blog.title} />
+            <p>{blog.publishedAt.display}</p>
+          </div>
+        ))}
+      </div>
+      <div className="">
         <h2>zenn.dev</h2>
         {rssFeeds.zenn.map((item) => (
-          <div key={item.guid}>
+          <div key={item.id}>
             <h3>
-              <a href={item.link} target="_blank" rel="noopener noreferrer">
-                {item.title}
-              </a>
+              <Link {...item.link}>{item.title}</Link>
             </h3>
             <img src={item.thumbnail.url} alt={item.title} />
             <p>{item.publishedAt?.display}</p>

@@ -6,8 +6,7 @@ body,
 #root {
   margin: 0;
   padding: 0;
-  background-color: $color__theme_white;
-  overscroll-behavior-y: none;
+  // overscroll-behavior-y: none;
 
   // override vertical-align of Fontawesome icons
   .fa,
@@ -31,6 +30,13 @@ body,
   .fat {
     vertical-align: middle;
   }
+}
+html {
+  background-color: $color__theme_primary;
+}
+body,
+#root {
+  background-color: $color__theme_white;
 }
 
 :root {

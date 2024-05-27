@@ -1,14 +1,22 @@
 import dayjs from "dayjs";
 import Parser from "rss-parser";
 import { appConfig } from "../../consts/appConfig";
-import { RssItem } from "../Models/RssItem";
+import { ArticleSummary } from "../Models/ArticleSummary";
 
-export function rssResponseFilter(response: Parser.Item[]): RssItem[] {
+export function rssResponseFilter(response: Parser.Item[]): ArticleSummary[] {
   return response
-    .map((item) => ({
-      guid: item.guid,
+    .filter(
+      (item): item is Required<Parser.Item> =>
+        !!item.guid &&
+        !!item.title &&
+        !!item.link &&
+        !!item.pubDate &&
+        !!item.content
+    )
+    .map<ArticleSummary>((item) => ({
+      id: item.guid,
       title: item.title,
-      link: item.link,
+      link: { type: "external", url: item.link },
       thumbnail: item.enclosure?.url
         ? {
             url: item.enclosure.url,
@@ -25,13 +33,6 @@ export function rssResponseFilter(response: Parser.Item[]): RssItem[] {
           }
         : null,
       content: item.content,
-    }))
-    .filter(
-      (item): item is RssItem =>
-        !!item.guid &&
-        !!item.title &&
-        !!item.link &&
-        !!item.publishedAt &&
-        !!item.content
-    );
+      category: null,
+    }));
 }
