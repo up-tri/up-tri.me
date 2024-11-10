@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import type { NextPage } from "next";
-import { LevelTile } from "../components/atoms/LevelTile";
+// import { LevelTile } from "../components/atoms/LevelTile";
 import { PageHeadProps } from "../components/atoms/PageHead";
 import { ImageWithCaption } from "../components/molecules/ImageWithCaption";
 import { PageFooterProps } from "../components/organisms/PageFooter";
 import { PageHeaderProps } from "../components/organisms/PageHeader";
 import { DefaultTemplate } from "../components/templates/DefaultTemplate";
-import { skills } from "../lib/profile/skills";
+// import { skills } from "../lib/profile/skills";
 import style from "./index.module.scss";
 
 const HomePage: NextPage = () => {
@@ -129,6 +129,24 @@ const HomePage: NextPage = () => {
                   href="https://zenn.dev/up_tri"
                 >
                   Zenn.dev
+                </a>
+              </li>
+              <li className={style.IndexPageProfileLinks__item}>
+                <i
+                  className={classNames(
+                    "fa-brands",
+                    "fa-bluesky",
+                    style.IndexPageProfileLinks__icon
+                  )}
+                />
+                <a
+                  id="uptrime__top_headlink_bsky"
+                  className={style.IndexPageProfileLinks__link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://bsky.up-tri.me"
+                >
+                  Bluesky
                 </a>
               </li>
             </ul>
@@ -303,7 +321,7 @@ const HomePage: NextPage = () => {
           </li>
         </ul>
       </div>
-      <div className={style.IndexPageSection}>
+      {/* <div className={style.IndexPageSection}>
         <h2 className={style.IndexPageSectionTitle}>スキルマップ</h2>
         <div className={style.IndexPageSkills}>
           {skills.map((skill, idx) => (
@@ -371,7 +389,7 @@ const HomePage: NextPage = () => {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </DefaultTemplate>
   );
 };
