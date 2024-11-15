@@ -5,6 +5,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: $color__theme_white;
 
   &__header {
     position: fixed;
